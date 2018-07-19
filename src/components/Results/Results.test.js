@@ -1,9 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { shallow } from 'enzyme';
+import Results from './Results.js';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+import Group from '../Group/Group.js';
+
+let wrapped;
+
+beforeEach(() => {
+	wrapped = shallow(<Results />);	
+});
+
+afterEach(() => {
+	wrapped.unmount();	
+});
+
+describe('the Group component.', () => {
+
+	it('shows.', () => {
+		expect(wrapped.find(Group).length).toEqual(1);
+	});
+
 });
