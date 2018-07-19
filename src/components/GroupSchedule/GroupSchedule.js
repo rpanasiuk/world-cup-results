@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './GroupSchedule.css';
 
 const GroupSchedule = () => {
-    return ();
+    return (null);
 };
 
 GroupSchedule.defaultProps = {};
