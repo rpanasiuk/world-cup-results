@@ -23,8 +23,8 @@ const GroupStandings = ({ isGroupStageFinished, matchHistory, teams }) => {
 	};
 
     return (
-    	<div className="group__standings">
-            <table className="standings table">
+    	<div className="group__standings standings">
+            <table className="standings__table table">
                 <tbody className="standings__body">
                     <tr className="standings__header">
                         <th className="standings__header-cell">Team</th>
