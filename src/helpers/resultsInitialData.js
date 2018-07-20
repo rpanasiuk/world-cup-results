@@ -22,34 +22,70 @@ export const groups = [
 export const schedule = [
 	[
 		{
-			firstTeam: "Poland",
-			secondTeam: "Brazil",
+			firstTeam: {
+				name: "Poland",
+				ISO: "POL"
+			},
+			secondTeam: {
+				name: "Brazil",
+				ISO: "BRA"
+			},
 			date: "17-07-2018"
 		},
 		{
-			firstTeam: "Germany",
-			secondTeam: "Spain",
+			firstTeam: {
+				name: "Germany",
+				ISO: "GER"
+			},
+			secondTeam: {
+				name: "Spain",
+				ISO: "ESP"
+			},
 			date: "17-07-2018"
 		},
 		{
-			firstTeam: "Poland",
-			secondTeam: "Spain",
+			firstTeam: {
+				name: "Poland",
+				ISO: "POL"
+			},
+			secondTeam: {
+				name: "Spain",
+				ISO: "ESP"
+			},
 			date: "20-07-2018"
 		},
 		{
-			firstTeam: "Germany",
-			secondTeam: "Brazil",
+			firstTeam: {
+				name: "Germany",
+				ISO: "GER"
+			},
+			secondTeam: {
+				name: "Brazil",
+				ISO: "BRA"
+			},
 			date: "20-07-2018"
 		},
 		{
-			firstTeam: "Poland",
-			secondTeam: "Germany",
+			firstTeam: {
+				name: "Germany",
+				ISO: "GER"
+			},
+			secondTeam: {
+				name: "Poland",
+				ISO: "POL"
+			},
 			date: "24-07-2018"
 		},
 		{
-			firstTeam: "Spain",
-			secondTeam: "Brazil",
+			firstTeam: {
+				name: "Spain",
+				ISO: "ESP"
+			},
+			secondTeam: {
+				name: "Brazil",
+				ISO: "BRA"
+			},
 			date: "24-07-2018"
-		},										
+		}								
 	]
 ];

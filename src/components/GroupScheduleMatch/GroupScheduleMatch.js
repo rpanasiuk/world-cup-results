@@ -18,44 +18,46 @@ class GroupScheduleMatch extends Component {
 		isPopupVisible: false
 	};
 
-    handleMatchScore = (firstTeamGoals, secondTeamGoals) => {
-        this.setState({
-        	firstTeamGoalsNum: firstTeamGoals,
-        	secondTeamGoalsNum: secondTeamGoals
-        }, () => {
-	    	const { firstTeam, secondTeam, date } = this.props.matchData;
-        	const matchHistoryObject = {
-        		[`${firstTeam+secondTeam+date}`]: {
-        			date: date,
-        			firstTeam: {
-        				name: firstTeam,
-        				scoredGoals: firstTeamGoals,
-        				lostGoals: secondTeamGoals
-        			},
-        			secondTeam: {
-        				name: secondTeam,
-        				scoredGoals: secondTeamGoals,
-        				lostGoals: firstTeamGoals        				
-        			}
-        		}
-        	};
-        	this.props.triggerAddMatchResult(matchHistoryObject);
-        });
-    };
+	handleMatchScore = (firstTeamGoals, secondTeamGoals) => {
+		this.setState({
+			firstTeamGoalsNum: firstTeamGoals,
+			secondTeamGoalsNum: secondTeamGoals
+		}, () => {
+			const { firstTeam, secondTeam, date } = this.props.matchData;
+			const matchHistoryObject = {
+				[`${firstTeam.name + secondTeam.name + date}`]: {
+					date: date,
+					firstTeam: {
+						name: firstTeam.name,
+						ISO: firstTeam.ISO,
+						scoredGoals: firstTeamGoals,
+						lostGoals: secondTeamGoals
+					},
+					secondTeam: {
+						name: secondTeam.name,
+						ISO: secondTeam.ISO,
+						scoredGoals: secondTeamGoals,
+						lostGoals: firstTeamGoals        				
+					}
+				}
+			};
+			this.props.triggerAddMatchResult(matchHistoryObject);
+		});
+	};
 
-    handlePopupVisibility = () => {
-        this.setState({
-        	isPopupVisible: !this.state.isPopupVisible
-        });
-    };
+	handlePopupVisibility = () => {
+		this.setState({
+			isPopupVisible: !this.state.isPopupVisible
+		});
+	};
 
-    triggerAddMatchResult = () => {
-    	this.props.addMatchResult()
-    }
+	triggerAddMatchResult = () => {
+		this.props.addMatchResult()
+	}
 
-    // shouldComponentUpdate = () => {
+	// shouldComponentUpdate = () => {
 
-    // }
+	// }
 
     render() {
     	const { firstTeam, secondTeam, date } = this.props.matchData;
@@ -82,7 +84,7 @@ class GroupScheduleMatch extends Component {
 	    		</div>
 	    		<div className="schedule__inner">
 	    			<div className="schedule__team schedule__team--first">
-	    				{firstTeam}
+	    				{firstTeam.name}
 	    			</div>
 
 	    			<div className="schedule__score" onClick={this.handlePopupVisibility}>
@@ -95,7 +97,7 @@ class GroupScheduleMatch extends Component {
 	    			</div>
 
 	    			<div className="schedule__team schedule__team--second">
-	    				{secondTeam}
+	    				{secondTeam.name}
 	    			</div>
 	    		</div>	    		
 	    	</div>

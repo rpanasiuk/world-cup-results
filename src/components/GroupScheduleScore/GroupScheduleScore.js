@@ -29,11 +29,11 @@ const GroupScheduleScore = ({ matchData, ...props }) => {
 
 				<div className="form__row">
 					<label htmlFor="firstTeamGoals">First Team Goals</label>
-					<div className="form__row-title">{firstTeam}</div>
+					<div className="form__row-title">{firstTeam.name}</div>
 					<input
 						className="form__control"
 						type="text"
-						id={firstTeam}
+						id={firstTeam.name}
 						name="firstTeamGoals"
 						ref={goals => firstTeamInput = goals}
 						required
@@ -44,11 +44,11 @@ const GroupScheduleScore = ({ matchData, ...props }) => {
 
 				<div className="form__row">
 					<label htmlFor="secondTeamGoals">Second Team Goals</label>
-					<div className="form__row-title">{secondTeam}</div>
+					<div className="form__row-title">{secondTeam.name}</div>
 					<input
 						className="form__control"
 						type="text"
-						id={secondTeam}
+						id={secondTeam.name}
 						name="secondTeamGoals"
 						ref={goals => secondTeamInput = goals}
 						required
@@ -58,9 +58,9 @@ const GroupScheduleScore = ({ matchData, ...props }) => {
 				</div>
 
 				<div className="form__row form__row--last form__button">
-                    <button type="submit" className="btn btn--form">Send</button>
-                    <button type="button" className="btn btn--form" onClick={triggerClose}>CANCEL</button>
-                </div>						
+					<button type="submit" className="btn btn--form">Send</button>
+					<button type="button" className="btn btn--form" onClick={triggerClose}>CANCEL</button>
+				</div>						
 
 			</form>
     	</div>
