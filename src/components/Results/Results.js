@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Group from '../Group/Group.js';
+import Group from '../Group';
 import { groups, schedule } from "../../helpers/resultsInitialData.js";
 
 import './Results.css';
@@ -26,7 +26,6 @@ const setInitialState = (initialData) => {
 const initialState = [{
 	isGroupStageFinished: false,
 	teams: setInitialState(groups),
-	matchHistory: {},
 	toggleScoresRandomizing: false
 }];
 

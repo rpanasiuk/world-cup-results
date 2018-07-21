@@ -13,6 +13,12 @@ class Group extends Component {
 
     state = { ...this.props.initialState };
 
+    componentWillReceiveProps = (nextProps) => { // alternatively use shouldComponentUpdate
+        if (nextProps.schedule.matchHistory !== this.props.schedule.matchHistory) {
+            this.handleUpdateGroupStandings(nextProps);
+        }
+    };
+
     handleGroupStageStatus = () => {
     	this.setState({
     		isGroupStageFinished: true
@@ -25,23 +31,14 @@ class Group extends Component {
         });
     };
 
-    handleAddMatchResult = (matchHistory) => {
-        this.setState({
-            matchHistory: { ...this.state.matchHistory, ...matchHistory }
-        }, () => {
-            this.handleUpdateGroupStandings(this.state.matchHistory);
-        });
-    };
-
-    handleUpdateGroupStandings = () => {
-        const { matchHistory } = this.state;
+    handleUpdateGroupStandings = (nextProps) => {
+        const { matchHistory } = nextProps.schedule;
         let newTeamScores = {};
 
         Object.keys(matchHistory).forEach((match) => {
             const matchData = matchHistory[match];
 
             [matchData.firstTeam, matchData.secondTeam].forEach((team) => {
-                console.log(team);
                 const name      = `${team.name}`;
 
                 const scored    = newTeamScores[name] ? Number(newTeamScores[name].scored) : 0;
@@ -77,7 +74,6 @@ class Group extends Component {
             return 3;
         }
         if (scoredGoals == lostGoals) {
-            console.log('debug')
             return 1;
         }
 
@@ -90,8 +86,7 @@ class Group extends Component {
 	        	<GroupStandings {...this.state} />
 	        	<GroupSchedule 
                     {...this.state} 
-                    groupSchedule={this.props.groupSchedule} 
-                    handleAddMatchResult={this.handleAddMatchResult}
+                    groupSchedule={this.props.groupSchedule}
                     handleToggleScoresRandomizing={this.handleToggleScoresRandomizing}
                 />
         	</div>

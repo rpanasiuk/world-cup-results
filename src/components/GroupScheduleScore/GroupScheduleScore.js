@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import onClickOutside from "react-onclickoutside";
 
 import DateConverter from "../../helpers/dateConverter.js";
+import { store } from "../../index.js";
+import { closePopup } from "../../actions/scheduleActions.js";
 
 import './GroupScheduleScore.css';
 
@@ -13,12 +16,12 @@ const GroupScheduleScore = ({ matchData, ...props }) => {
 		e.preventDefault();
 
 		props.handleMatchScore(firstTeamInput.value, secondTeamInput.value);
-		props.handlePopupVisibility();
+		props.handlePopupClosing();
 	};
 
 	const triggerClose = () => {
-		props.handlePopupVisibility();
-	};
+		props.handlePopupClosing();
+	};	
 
     return (
     	<div className="schedule__popup popup">
@@ -67,5 +70,10 @@ const GroupScheduleScore = ({ matchData, ...props }) => {
     );
 }
 
-export default GroupScheduleScore;
-
+export default onClickOutside(GroupScheduleScore, {
+	handleClickOutside: () => {
+		return () => {
+			store.dispatch(closePopup());
+		};
+	}
+});

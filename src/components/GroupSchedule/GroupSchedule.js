@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import GroupScheduleMatch from '../GroupScheduleMatch/GroupScheduleMatch.js';
+import GroupScheduleMatch from '../GroupScheduleMatch';
 import GroupScheduleButton from '../GroupScheduleButton/GroupScheduleButton.js';
 
 import './GroupSchedule.css';
 
 const GroupSchedule = ({ groupSchedule, handleAddMatchResult, ...props }) => {
-	let firstRandomNum, secondRandomNum;
-
-	const addMatchResult = (matchHistory) => {
-		handleAddMatchResult(matchHistory);
-	};
 
 	const toggleScoresRandomizing = () => {
 		props.handleToggleScoresRandomizing();
@@ -26,7 +21,6 @@ const GroupSchedule = ({ groupSchedule, handleAddMatchResult, ...props }) => {
 						<GroupScheduleMatch 
 							key={i}
 							matchData={match}
-							triggerAddMatchResult={addMatchResult}
 							toggleScoresRandomizing={props.toggleScoresRandomizing}
 						/>
 					);

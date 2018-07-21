@@ -1,0 +1,5 @@
+export const TOGGLE_POPUP_VISIBILITY 	= 'TOGGLE_POPUP_VISIBILITY';
+export const ADD_MATCH_TO_HISTORY 		= 'ADD_MATCH_TO_HISTORY';
+
+export const OPEN_POPUP 				= 'OPEN_POPUP';
+export const CLOSE_POPUP 				= 'CLOSE_POPUP';

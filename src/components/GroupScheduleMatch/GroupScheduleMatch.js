@@ -15,18 +15,27 @@ class GroupScheduleMatch extends Component {
 	state = {
 		firstTeamGoalsNum: null,
 		secondTeamGoalsNum: null,
-		isPopupVisible: false
+		isActive: false
 	};
 
 	componentWillReceiveProps = (nextProps) => {
 		if (nextProps.toggleScoresRandomizing !== this.props.toggleScoresRandomizing) {
 			this.handleRandomMatchScore();
 		}
-	}
 
+		if (this.state.isActive && !nextProps.isPopupVisible) {
+			this.handleIsActiveStatus();
+		}
+	};
 	// shouldComponentUpdate = () => {
 
 	// }
+
+	handleIsActiveStatus = () => {
+		this.setState({
+			isActive: !this.state.isActive
+		})		
+	};
 
 	handleMatchScore = (firstTeamGoals, secondTeamGoals) => {
 		this.setState({
@@ -39,10 +48,14 @@ class GroupScheduleMatch extends Component {
 		});
 	};
 
-	handlePopupVisibility = () => {
-		this.setState({
-			isPopupVisible: !this.state.isPopupVisible
-		});
+	handlePopupClosing = () => {
+		this.props.closePopup();
+		this.handleIsActiveStatus();
+	};
+
+	handlePopupOpening = () => {
+		this.props.openPopup();
+		this.handleIsActiveStatus();
 	};
 
 	handleRandomMatchScore = () => {
@@ -54,7 +67,7 @@ class GroupScheduleMatch extends Component {
 
 			this.createMatchHistoryObject(firstTeamGoalsNum, secondTeamGoalsNum);
 		})
-	}
+	};
 
 	createMatchHistoryObject = (firstTeamGoals, secondTeamGoals) => {
 		const { firstTeam, secondTeam, date } = this.props.matchData;
@@ -75,7 +88,8 @@ class GroupScheduleMatch extends Component {
 				}
 			}
 		};
-		this.props.triggerAddMatchResult(matchHistoryObject);
+		
+		this.props.addMatchToHistory(matchHistoryObject);
 	}
 
     render() {
@@ -87,11 +101,12 @@ class GroupScheduleMatch extends Component {
 	    return (
 	    	<div className="schedule__match-item">
 	    		{
-	    			this.state.isPopupVisible 
+	    			(this.props.isPopupVisible && this.state.isActive) 
 	    			? <GroupScheduleScore 
 	    				handleMatchScore={this.handleMatchScore} 
 	    				matchData={this.props.matchData}
-	    				handlePopupVisibility={this.handlePopupVisibility}
+	    				handlePopupClosing={this.handlePopupClosing}
+	    				handlePopupOpening={this.handlePopupOpening}
 	    				// dateFormatted={dateFormatted} // edit DateConverter class
 	    			/> 
 	    			: null
@@ -106,12 +121,12 @@ class GroupScheduleMatch extends Component {
 	    				{firstTeam.name}
 	    			</div>
 
-	    			<div className="schedule__match-results" onClick={this.handlePopupVisibility}>
+	    			<div className="schedule__match-results" onClick={this.handlePopupOpening}>
 	    				<div className="schedule__match-score schedule__match-score--first">
-	    					{firstTeamGoalsNum ? firstTeamGoalsNum : "-"}
+	    					{firstTeamGoalsNum == null ? firstTeamGoalsNum : "-"}
 	    				</div>
 	    				<div className="schedule__match-score schedule__match-score--second">
-	    					{secondTeamGoalsNum ? secondTeamGoalsNum : "-"}
+	    					{secondTeamGoalsNum == null ? secondTeamGoalsNum : "-"}
 	    				</div>
 	    			</div>
 
