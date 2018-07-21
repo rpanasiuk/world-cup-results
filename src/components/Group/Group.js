@@ -19,12 +19,18 @@ class Group extends Component {
     	});
     };
 
+    handleToggleScoresRandomizing = () => {
+        this.setState({
+            toggleScoresRandomizing: !this.state.toggleScoresRandomizing
+        });
+    };
+
     handleAddMatchResult = (matchHistory) => {
         this.setState({
             matchHistory: { ...this.state.matchHistory, ...matchHistory }
         }, () => {
-            this.handleUpdateGroupStandings(matchHistory);
-        });        
+            this.handleUpdateGroupStandings(this.state.matchHistory);
+        });
     };
 
     handleUpdateGroupStandings = () => {
@@ -35,6 +41,7 @@ class Group extends Component {
             const matchData = matchHistory[match];
 
             [matchData.firstTeam, matchData.secondTeam].forEach((team) => {
+                console.log(team);
                 const name      = `${team.name}`;
 
                 const scored    = newTeamScores[name] ? Number(newTeamScores[name].scored) : 0;
@@ -70,6 +77,7 @@ class Group extends Component {
             return 3;
         }
         if (scoredGoals == lostGoals) {
+            console.log('debug')
             return 1;
         }
 
@@ -80,7 +88,12 @@ class Group extends Component {
         return(
         	<div className="group">
 	        	<GroupStandings {...this.state} />
-	        	<GroupSchedule {...this.state} groupSchedule={this.props.groupSchedule} handleAddMatchResult={this.handleAddMatchResult} />
+	        	<GroupSchedule 
+                    {...this.state} 
+                    groupSchedule={this.props.groupSchedule} 
+                    handleAddMatchResult={this.handleAddMatchResult}
+                    handleToggleScoresRandomizing={this.handleToggleScoresRandomizing}
+                />
         	</div>
         );
     }

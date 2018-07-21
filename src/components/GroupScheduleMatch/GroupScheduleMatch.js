@@ -18,30 +18,24 @@ class GroupScheduleMatch extends Component {
 		isPopupVisible: false
 	};
 
+	componentWillReceiveProps = (nextProps) => {
+		if (nextProps.toggleScoresRandomizing !== this.props.toggleScoresRandomizing) {
+			this.handleRandomMatchScore();
+		}
+	}
+
+	// shouldComponentUpdate = () => {
+
+	// }
+
 	handleMatchScore = (firstTeamGoals, secondTeamGoals) => {
 		this.setState({
 			firstTeamGoalsNum: firstTeamGoals,
 			secondTeamGoalsNum: secondTeamGoals
 		}, () => {
-			const { firstTeam, secondTeam, date } = this.props.matchData;
-			const matchHistoryObject = {
-				[`${firstTeam.name + secondTeam.name + date}`]: {
-					date: date,
-					firstTeam: {
-						name: firstTeam.name,
-						ISO: firstTeam.ISO,
-						scoredGoals: firstTeamGoals,
-						lostGoals: secondTeamGoals
-					},
-					secondTeam: {
-						name: secondTeam.name,
-						ISO: secondTeam.ISO,
-						scoredGoals: secondTeamGoals,
-						lostGoals: firstTeamGoals        				
-					}
-				}
-			};
-			this.props.triggerAddMatchResult(matchHistoryObject);
+			const { firstTeamGoalsNum, secondTeamGoalsNum } = this.state;
+
+			this.createMatchHistoryObject(firstTeamGoalsNum, secondTeamGoalsNum);
 		});
 	};
 
@@ -51,13 +45,38 @@ class GroupScheduleMatch extends Component {
 		});
 	};
 
-	triggerAddMatchResult = () => {
-		this.props.addMatchResult()
+	handleRandomMatchScore = () => {
+		this.setState({
+			firstTeamGoalsNum: Math.floor(Math.random()*11),
+			secondTeamGoalsNum: Math.floor(Math.random()*11)
+		}, () => {
+			const { firstTeamGoalsNum, secondTeamGoalsNum } = this.state;
+
+			this.createMatchHistoryObject(firstTeamGoalsNum, secondTeamGoalsNum);
+		})
 	}
 
-	// shouldComponentUpdate = () => {
-
-	// }
+	createMatchHistoryObject = (firstTeamGoals, secondTeamGoals) => {
+		const { firstTeam, secondTeam, date } = this.props.matchData;
+		const matchHistoryObject = {
+			[`${firstTeam.name + secondTeam.name + date}`]: {
+				date: date,
+				firstTeam: {
+					name: firstTeam.name,
+					ISO: firstTeam.ISO,
+					scoredGoals: firstTeamGoals,
+					lostGoals: secondTeamGoals
+				},
+				secondTeam: {
+					name: secondTeam.name,
+					ISO: secondTeam.ISO,
+					scoredGoals: secondTeamGoals,
+					lostGoals: firstTeamGoals        				
+				}
+			}
+		};
+		this.props.triggerAddMatchResult(matchHistoryObject);
+	}
 
     render() {
     	const { firstTeam, secondTeam, date } = this.props.matchData;
@@ -66,7 +85,7 @@ class GroupScheduleMatch extends Component {
     	const { firstTeamGoalsNum, secondTeamGoalsNum } = this.state;    	
 
 	    return (
-	    	<div className="schedule__match">
+	    	<div className="schedule__match-item">
 	    		{
 	    			this.state.isPopupVisible 
 	    			? <GroupScheduleScore 
@@ -77,26 +96,26 @@ class GroupScheduleMatch extends Component {
 	    			/> 
 	    			: null
 	    		}
-	    		<div className="schedule__title">
+	    		<div className="schedule__match-title">
 	    			{dateFormatted.getDayName()}
 	    			{dateFormatted.getOrdinalDayNumber()}
 	    			{dateFormatted.getMonthName()}
 	    		</div>
-	    		<div className="schedule__inner">
-	    			<div className="schedule__team schedule__team--first">
+	    		<div className="schedule__match-inner">
+	    			<div className="schedule__match-team schedule__match-team--first">
 	    				{firstTeam.name}
 	    			</div>
 
-	    			<div className="schedule__score" onClick={this.handlePopupVisibility}>
-	    				<div className="schedule__score-first">
+	    			<div className="schedule__match-results" onClick={this.handlePopupVisibility}>
+	    				<div className="schedule__match-score schedule__match-score--first">
 	    					{firstTeamGoalsNum ? firstTeamGoalsNum : "-"}
 	    				</div>
-	    				<div className="schedule__score-second">
+	    				<div className="schedule__match-score schedule__match-score--second">
 	    					{secondTeamGoalsNum ? secondTeamGoalsNum : "-"}
 	    				</div>
 	    			</div>
 
-	    			<div className="schedule__team schedule__team--second">
+	    			<div className="schedule__match-team schedule__match-team--second">
 	    				{secondTeam.name}
 	    			</div>
 	    		</div>	    		
