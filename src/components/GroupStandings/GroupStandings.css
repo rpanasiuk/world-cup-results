@@ -1,0 +1,25 @@
+.group__standings {
+  width: 100%;
+  padding: 10px; }
+
+.standings__table {
+  margin: 0 auto;
+  width: 280px; }
+
+.table {
+  border-collapse: collapse;
+  text-align: center; }
+  .table__header {
+    border-bottom: 1.5px solid #000; }
+    .table__header-cell {
+      font-size: 1.2rem;
+      font-weight: 400; }
+  .table__row {
+    border-bottom: 1px solid #000; }
+    .table__row:last-of-type {
+      border: 0; }
+    .table__row-cell {
+      padding: .5rem;
+      font-size: 1rem; }
+      .table__row-cell--team {
+        font-weight: 600; }

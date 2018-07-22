@@ -83,6 +83,9 @@ class Group extends Component {
     render() {
         return(
         	<div className="group">
+                <div className="group__title block-title">
+                    <div className="group__title-txt">Group Stage</div>
+                </div>
 	        	<GroupStandings {...this.state} />
 	        	<GroupSchedule 
                     {...this.state} 

@@ -14,6 +14,9 @@ const GroupSchedule = ({ groupSchedule, handleAddMatchResult, ...props }) => {
 
     return (
 		<div className="group__schedule schedule">
+			<div className="schedule__title block-title">
+				<div className="schedule__title-txt">Scores</div>
+			</div>		
 			<GroupScheduleButton toggleScoresRandomizing={toggleScoresRandomizing} />
 			<ul className="schedule__match-list">
 				{groupSchedule.map((match, i) => {

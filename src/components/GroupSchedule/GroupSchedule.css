@@ -1,0 +1,14 @@
+.group__schedule {
+  padding: 10px; }
+
+.schedule__title {
+  font-size: 2rem;
+  font-weight: 700;
+  position: relative;
+  margin-bottom: 3.5rem; }
+  .schedule__title-txt {
+    text-align: center; }
+
+.schedule__match-list {
+  padding: 10px;
+  list-style: none; }

@@ -1,0 +1,38 @@
+.block-title {
+	
+	&:after {
+		content: "\f005"; //star
+		font-family: 'FontAwesome';
+		font-size: 1.6rem;
+		color: #000;
+		line-height: 1;
+		position: absolute;
+		left: 50%;
+		bottom: -.5rem;
+		transform: translate(-50%, 100%);
+	}
+
+	& > div {
+		height: 100%;
+
+		&:before {
+			content: "";
+			border-top: 0.2rem solid #000;
+			width: 4rem;
+			position: absolute;
+			bottom: -1rem;
+			left: 50%;
+			transform: translate(-130%, 100%);
+		}
+
+		&:after {
+			content: "";
+			border-top: 0.2rem solid #000;
+			width: 4rem;
+			position: absolute;
+			bottom: -1rem;
+			right: 50%;
+			transform: translate(130%, 100%);			
+		}	
+	}
+}

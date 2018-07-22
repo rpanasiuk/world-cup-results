@@ -25,13 +25,13 @@ const GroupStandings = ({ isGroupStageFinished, matchHistory, teams }) => {
     return (
     	<div className="group__standings standings">
             <table className="standings__table table">
-                <tbody className="standings__body">
-                    <tr className="standings__header">
-                        <th className="standings__header-cell">Team</th>
-                        <th className="standings__header-cell">GS</th>
-                        <th className="standings__header-cell">GL</th>
-                        <th className="standings__header-cell">GB</th>
-                        <th className="standings__header-cell">Points</th>
+                <tbody className="table__body">
+                    <tr className="table__header">
+                        <th className="table__header-cell">Team</th>
+                        <th className="table__header-cell">GS</th>
+                        <th className="table__header-cell">GL</th>
+                        <th className="table__header-cell">GB</th>
+                        <th className="table__header-cell">Points</th>
                     </tr>
             		{sortStandings().map((row, i) => {
             			return (

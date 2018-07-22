@@ -1,0 +1,41 @@
+.schedule__match-item {
+  text-align: center;
+  border-bottom: 1px solid black;
+  padding: .8rem; }
+  .schedule__match-item:first-of-type {
+    border-top: 1px solid black; }
+
+.schedule__match-title {
+  margin-bottom: .8rem; }
+  .schedule__match-title span {
+    margin-right: 5px;
+    text-transform: uppercase; }
+    .schedule__match-title span:last-of-type {
+      margin: 0; }
+
+.schedule__match-inner {
+  display: flex;
+  justify-content: space-around; }
+
+.schedule__match-team {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-weight: 600; }
+  .schedule__match-team--second {
+    justify-content: flex-start; }
+
+.schedule__match-results {
+  display: flex;
+  justify-content: space-around;
+  flex: 1; }
+
+.schedule__match-score {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: tomato;
+  font-weight: 600; }

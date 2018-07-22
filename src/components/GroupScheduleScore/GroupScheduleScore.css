@@ -1,0 +1,60 @@
+.schedule__popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  min-height: 150px;
+  width: 80%;
+  max-width: 500px;
+  padding: 15px; }
+
+.popup {
+  background: #c9d6de;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4); }
+  .popup__title {
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+    margin-bottom: 3.5rem; }
+
+.form label {
+  position: absolute;
+  left: 9999999px; }
+
+.form__row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem; }
+  .form__row-title {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.2rem; }
+  .form__row--last {
+    align-items: center;
+    justify-content: space-around; }
+
+.form__control {
+  padding: .5rem 1rem;
+  max-width: 200px;
+  width: 60%;
+  transition: 0.4s border-color, 0.5s box-shadow;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #52616a; }
+  .form__control:focus {
+    outline: none;
+    border-color: #000;
+    text-shadow: 0 0 0 1px #000; }
+
+.form__button button {
+  display: block; }
+
+.btn--form {
+  padding: .7rem 0;
+  width: 40%;
+  max-width: 10rem;
+  font-size: 1rem; }

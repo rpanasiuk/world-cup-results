@@ -25,8 +25,8 @@ const GroupScheduleScore = ({ matchData, ...props }) => {
 
     return (
     	<div className="schedule__popup popup">
-    		<div className="popup__title">
-
+    		<div className="popup__title block-title">
+    			<div className="popup__title-txt">Score</div>
     		</div>
 			<form className="popup__form form" id="matchScoreForm" onSubmit={triggerSubmit}>
 
@@ -71,7 +71,7 @@ const GroupScheduleScore = ({ matchData, ...props }) => {
 }
 
 export default onClickOutside(GroupScheduleScore, {
-	handleClickOutside: () => {
+	handleClickOutside: (e) => {
 		return () => {
 			store.dispatch(closePopup());
 		};

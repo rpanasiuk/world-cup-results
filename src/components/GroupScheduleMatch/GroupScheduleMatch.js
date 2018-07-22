@@ -99,7 +99,7 @@ class GroupScheduleMatch extends Component {
     	const { firstTeamGoalsNum, secondTeamGoalsNum } = this.state;    	
 
 	    return (
-	    	<div className="schedule__match-item">
+	    	<li className="schedule__match-item">
 	    		{
 	    			(this.props.isPopupVisible && this.state.isActive) 
 	    			? <GroupScheduleScore 
@@ -112,29 +112,29 @@ class GroupScheduleMatch extends Component {
 	    			: null
 	    		}
 	    		<div className="schedule__match-title">
-	    			{dateFormatted.getDayName()}
-	    			{dateFormatted.getOrdinalDayNumber()}
-	    			{dateFormatted.getMonthName()}
+	    			<span>{dateFormatted.getDayName()}</span>
+	    			<span>{dateFormatted.getOrdinalDayNumber()}</span>
+	    			<span>{dateFormatted.getMonthName()}</span>
 	    		</div>
 	    		<div className="schedule__match-inner">
 	    			<div className="schedule__match-team schedule__match-team--first">
-	    				{firstTeam.name}
+	    				<span>{firstTeam.name}</span>
 	    			</div>
 
 	    			<div className="schedule__match-results" onClick={this.handlePopupOpening}>
 	    				<div className="schedule__match-score schedule__match-score--first">
-	    					{firstTeamGoalsNum == null ? firstTeamGoalsNum : "-"}
+	    					<span>{firstTeamGoalsNum !== null ? firstTeamGoalsNum : "-"}</span>
 	    				</div>
 	    				<div className="schedule__match-score schedule__match-score--second">
-	    					{secondTeamGoalsNum == null ? secondTeamGoalsNum : "-"}
+	    					<span>{secondTeamGoalsNum !== null ? secondTeamGoalsNum : "-"}</span>
 	    				</div>
 	    			</div>
 
 	    			<div className="schedule__match-team schedule__match-team--second">
-	    				{secondTeam.name}
+	    				<span>{secondTeam.name}</span>
 	    			</div>
 	    		</div>	    		
-	    	</div>
+	    	</li>
 	    );
     }
 }
