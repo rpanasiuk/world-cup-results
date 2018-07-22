@@ -2,16 +2,18 @@ import { connect } from "react-redux";
 
 import Group from "./Group.js";
 
-const mapStateToProps = ({ schedule }) => {
+import { toggleScoresRandomizer  } from "../../actions/scheduleActions.js";
 
+const mapStateToProps = ({ schedule }) => {
 	return {
 		schedule
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
-
-	return;
+	return {
+		toggleScoresRandomizer: () => dispatch(toggleScoresRandomizer())
+	};
 };
 
-export default connect(mapStateToProps)(Group);
+export default connect(mapStateToProps, mapDispatchToProps)(Group);

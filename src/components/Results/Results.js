@@ -25,8 +25,7 @@ const setInitialState = (initialData) => {
 
 const initialState = [{
 	isGroupStageFinished: false,
-	teams: setInitialState(groups),
-	toggleScoresRandomizing: false
+	teams: setInitialState(groups)
 }];
 
 const Results = () => {

@@ -19,7 +19,7 @@ class GroupScheduleMatch extends Component {
 	};
 
 	componentWillReceiveProps = (nextProps) => {
-		if (nextProps.toggleScoresRandomizing !== this.props.toggleScoresRandomizing) {
+		if (nextProps.toggleScoresRandomizer !== this.props.toggleScoresRandomizer) {
 			this.handleRandomMatchScore();
 		}
 

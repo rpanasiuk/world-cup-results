@@ -16,3 +16,7 @@ export const openPopup = () => ({
 export const closePopup = () => ({
 	type: types.CLOSE_POPUP
 });
+
+export const toggleScoresRandomizer = () => ({
+	type: types.TOGGLE_RANDOMIZER
+});

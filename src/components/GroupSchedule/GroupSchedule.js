@@ -8,23 +8,18 @@ import './GroupSchedule.css';
 
 const GroupSchedule = ({ groupSchedule, handleAddMatchResult, ...props }) => {
 
-	const toggleScoresRandomizing = () => {
-		props.handleToggleScoresRandomizing();
-	};
-
     return (
 		<div className="group__schedule schedule">
 			<div className="schedule__title block-title">
 				<div className="schedule__title-txt">Scores</div>
 			</div>		
-			<GroupScheduleButton toggleScoresRandomizing={toggleScoresRandomizing} />
+			<GroupScheduleButton scoresRandomizing={props.scoresRandomizing} />
 			<ul className="schedule__match-list">
 				{groupSchedule.map((match, i) => {
 					return (
 						<GroupScheduleMatch 
 							key={i}
-							matchData={match}
-							toggleScoresRandomizing={props.toggleScoresRandomizing}
+							matchData={match}							
 						/>
 					);
 				})}

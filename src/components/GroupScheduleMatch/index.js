@@ -7,7 +7,8 @@ import { addMatchToHistory, openPopup, closePopup  } from "../../actions/schedul
 const mapStateToProps = ({ schedule }) => {
 
 	return {
-		isPopupVisible: schedule.isPopupVisible
+		isPopupVisible: schedule.isPopupVisible,
+		toggleScoresRandomizer: schedule.toggleScoresRandomizer
 	};
 };
 

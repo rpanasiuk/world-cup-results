@@ -3,3 +3,5 @@ export const ADD_MATCH_TO_HISTORY 		= 'ADD_MATCH_TO_HISTORY';
 
 export const OPEN_POPUP 				= 'OPEN_POPUP';
 export const CLOSE_POPUP 				= 'CLOSE_POPUP';
+
+export const TOGGLE_RANDOMIZER 	= 'TOGGLE_RANDOMIZER';

@@ -25,10 +25,8 @@ class Group extends Component {
     	});
     };
 
-    handleToggleScoresRandomizing = () => {
-        this.setState({
-            toggleScoresRandomizing: !this.state.toggleScoresRandomizing
-        });
+    handleScoresRandomizing = () => {
+        this.props.toggleScoresRandomizer();
     };
 
     handleUpdateGroupStandings = (nextProps) => {
@@ -90,7 +88,7 @@ class Group extends Component {
 	        	<GroupSchedule 
                     {...this.state} 
                     groupSchedule={this.props.groupSchedule}
-                    handleToggleScoresRandomizing={this.handleToggleScoresRandomizing}
+                    scoresRandomizing={this.handleScoresRandomizing}
                 />
         	</div>
         );

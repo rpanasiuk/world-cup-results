@@ -2,7 +2,7 @@
   padding: 15px; }
 
 .group {
-  max-width: calc($max-content-width / 3); }
+  max-width: calc(1140px / 3); }
   .group__title {
     font-size: 2rem;
     font-weight: 700;

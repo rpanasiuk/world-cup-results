@@ -2,7 +2,8 @@ import * as types from "../constants/scheduleConstants.js";
 
 const defaultState = {
 	isPopupVisible: false,
-	matchHistory: {}
+	matchHistory: {},
+    toggleScoresRandomizer: false
 };
 
 const scheduleReducer = (state = defaultState, action) => {
@@ -30,7 +31,13 @@ const scheduleReducer = (state = defaultState, action) => {
             return {
             	...state,
             	matchHistory: { ...state.matchHistory, ...action.payload }
-            };            
+            };
+
+        case types.TOGGLE_RANDOMIZER:
+            return {
+                ...state,
+            toggleScoresRandomizer: !state.toggleScoresRandomizer
+        };           
 
         default:
             return state;

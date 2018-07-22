@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 import './GroupScheduleButton.css';
 
-const GroupScheduleButton = ({ toggleScoresRandomizing }) => {
+const GroupScheduleButton = ({ scoresRandomizing }) => {
 
-	const triggerToggleScoresRandomizing = () => {
-		toggleScoresRandomizing();
+	const triggerScoresRandomizer = () => {
+		scoresRandomizing();
 	};
 
     return (
 		<div className="schedule__button">
-			<button type="button" className="btn btn--randomize" onClick={triggerToggleScoresRandomizing}>randomize</button>
+			<button type="button" className="btn btn--randomize" onClick={triggerScoresRandomizer}>randomize</button>
 		</div>
     );
 };
