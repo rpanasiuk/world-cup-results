@@ -5,8 +5,8 @@ import './GroupStandingsRow.css';
 const GroupStandingsRow = ({ isWinner, team }) => {
 
     return (
-    	<tr className={"table__row" + `${isWinner ? " isWinner" : ""}`}>
-    		<td className="table__row-cell table__row-cell--team">{team.ISO}</td>
+    	<tr className={"table__row" + `${isWinner ? " isWinner-color" : ""}`}>
+    		<td className={"table__row-cell" + `${isWinner ? " isWinner-trophy" : ""}` + " table__row-cell--team"}>{team.ISO}</td>
     		<td className="table__row-cell table__row-cell--gs">{team.scored}</td>
     		<td className="table__row-cell table__row-cell--gl">{team.lost}</td>
     		<td className="table__row-cell table__row-cell--gb">{team.balance}</td>

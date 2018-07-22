@@ -10,9 +10,18 @@ const GroupStandings = ({ isGroupStageFinished, matchHistory, teams }) => {
 
 	const sortStandings = () => {
 		const teamsArray = Object.keys(teams).map(country => teams[country]);
-
+        additionalCheck(teamsArray);
 		return _.reverse(_.sortBy(teamsArray, ['points', 'balance', 'scored']));
 	};
+
+    const additionalCheck = (teamsArray) => {
+        console.log(teamsArray)
+        for (let i=0; i<teamsArray.length-1; i++) {
+            for (let j=i+1; j<teamsArray.length; j++) {
+                console.log(Object.values(teamsArray[j]))
+            }
+        }
+    }
 
 	const markGroupWinner = (index) => {
 		if (isGroupStageFinished && index === 0) {

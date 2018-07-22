@@ -1,0 +1,16 @@
+.table__row-cell--team {
+  position: relative; }
+
+.isWinner-color {
+  background: yellow; }
+
+.isWinner-trophy:after {
+  content: "\f091";
+  font-family: 'FontAwesome';
+  font-size: 1.6rem;
+  color: #000;
+  line-height: 1;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(10%, -50%); }
