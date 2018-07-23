@@ -13,7 +13,7 @@ class Group extends Component {
 
     state = { ...this.props.initialState };
 
-    componentWillReceiveProps = (nextProps) => { // alternatively use shouldComponentUpdate
+    componentWillReceiveProps = (nextProps) => {
         if (nextProps.group.matchHistory !== this.props.group.matchHistory) {
             this.handleUpdateGroupStandings(nextProps);
         }

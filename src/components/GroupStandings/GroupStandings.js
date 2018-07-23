@@ -36,16 +36,16 @@ const GroupStandings = ({ isGroupStageFinished, matchHistory, teams }) => {
             }
         }
 
-        console.log('matchesToCheck', matchesToCheck)
-
         if (matchesToCheck.length > 1) {
             return teamsArray;
+
         } else if (matchesToCheck.length == 1) {
             return getMatchHistory({
                 teamsArray: teamsArray,
                 firstTeamISO: firstTeamISO,
                 secondTeamISO: secondTeamISO                
             })
+
         } else {
             return teamsArray;
         }
@@ -53,7 +53,7 @@ const GroupStandings = ({ isGroupStageFinished, matchHistory, teams }) => {
 
     const getMatchHistory = ({ ...props }) => {
         // get match from history to check H2H score
-        console.log('getMatchHistory', props)
+
         if (matchHistory.hasOwnProperty(props.firstTeamISO + props.secondTeamISO)) {
             return checkMatchWinner(props.teamsArray, props.firstTeamISO, props.secondTeamISO);
 
@@ -78,23 +78,21 @@ const GroupStandings = ({ isGroupStageFinished, matchHistory, teams }) => {
                 indexSecondISO = i;
             }
         })
-        console.log('indexes', indexFirstISO, indexSecondISO)
-        console.log('scoredGoals', scoredGoals)
-        console.log('lostGoals', lostGoals)
+
         if (scoredGoals > lostGoals && indexFirstISO > indexSecondISO) {
-            console.log("win")
             return swapTeams(teamsArray, indexFirstISO, indexSecondISO);
+
         } else if (scoredGoals < lostGoals && indexFirstISO < indexSecondISO) {
             return swapTeams(teamsArray, indexFirstISO, indexSecondISO);
-        } else {
-            
+
+        } else {            
             return teamsArray;
         }           
     };
 
     const swapTeams = (array, firstIndex, secondIndex) => {
         // swap teams in table
-        console.log(swapTeams);
+        
         const temp = array[firstIndex];
         array[firstIndex] = array[secondIndex]
         array[secondIndex] = temp;

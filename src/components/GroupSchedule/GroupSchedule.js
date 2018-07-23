@@ -6,7 +6,7 @@ import GroupScheduleButton from '../GroupScheduleButton/GroupScheduleButton.js';
 
 import './GroupSchedule.css';
 
-const GroupSchedule = ({ groupSchedule, handleAddMatchResult, ...props }) => {
+const GroupSchedule = ({ groupSchedule, ...props }) => {
 
     return (
 		<div className="group__schedule schedule">

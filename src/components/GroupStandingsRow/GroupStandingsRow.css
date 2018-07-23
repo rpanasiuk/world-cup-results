@@ -2,7 +2,7 @@
   position: relative; }
 
 .isWinner-color {
-  background: yellow; }
+  background: #EFDC05; }
 
 .isWinner-trophy:after {
   content: "\f091";

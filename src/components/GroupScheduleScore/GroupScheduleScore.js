@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import onClickOutside from "react-onclickoutside";
 
-import DateConverter from "../../helpers/dateConverter.js";
 import { store } from "../../index.js";
 import { closePopup } from "../../actions/globalActions.js";
 

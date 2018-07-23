@@ -5,13 +5,13 @@
 }
 
 .isWinner-color {
-	background: yellow;	
+	background: #EFDC05;	
 }
 
 .isWinner-trophy {
 
 	&:after {
-		content: "\f091"; //star
+		content: "\f091"; //trophy
 		font-family: 'FontAwesome';
 		font-size: 1.2rem;
 		color: #000;
