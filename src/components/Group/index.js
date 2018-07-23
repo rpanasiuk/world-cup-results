@@ -2,11 +2,11 @@ import { connect } from "react-redux";
 
 import Group from "./Group.js";
 
-import { toggleScoresRandomizer  } from "../../actions/scheduleActions.js";
+import { toggleScoresRandomizer  } from "../../actions/groupActions.js";
 
-const mapStateToProps = ({ schedule }) => {
+const mapStateToProps = ({ group }) => {
 	return {
-		schedule
+		group
 	};
 };
 

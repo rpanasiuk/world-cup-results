@@ -27,9 +27,6 @@ class GroupScheduleMatch extends Component {
 			this.handleIsActiveStatus();
 		}
 	};
-	// shouldComponentUpdate = () => {
-
-	// }
 
 	handleIsActiveStatus = () => {
 		this.setState({
@@ -44,7 +41,7 @@ class GroupScheduleMatch extends Component {
 		}, () => {
 			const { firstTeamGoalsNum, secondTeamGoalsNum } = this.state;
 
-			this.createMatchHistoryObject(firstTeamGoalsNum, secondTeamGoalsNum);
+			this.createMatchHistoryObject(firstTeamGoalsNum, secondTeamGoalsNum);			
 		});
 	};
 
@@ -72,7 +69,7 @@ class GroupScheduleMatch extends Component {
 	createMatchHistoryObject = (firstTeamGoals, secondTeamGoals) => {
 		const { firstTeam, secondTeam, date } = this.props.matchData;
 		const matchHistoryObject = {
-			[`${firstTeam.name + secondTeam.name + date}`]: {
+			[`${firstTeam.ISO + secondTeam.ISO}`]: {
 				date: date,
 				firstTeam: {
 					name: firstTeam.name,
@@ -90,7 +87,8 @@ class GroupScheduleMatch extends Component {
 		};
 		
 		this.props.addMatchToHistory(matchHistoryObject);
-	}
+		this.props.createGroupWinner();
+	};
 
     render() {
     	const { firstTeam, secondTeam, date } = this.props.matchData;
@@ -107,7 +105,6 @@ class GroupScheduleMatch extends Component {
 	    				matchData={this.props.matchData}
 	    				handlePopupClosing={this.handlePopupClosing}
 	    				handlePopupOpening={this.handlePopupOpening}
-	    				// dateFormatted={dateFormatted} // edit DateConverter class
 	    			/> 
 	    			: null
 	    		}

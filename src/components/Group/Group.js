@@ -14,15 +14,9 @@ class Group extends Component {
     state = { ...this.props.initialState };
 
     componentWillReceiveProps = (nextProps) => { // alternatively use shouldComponentUpdate
-        if (nextProps.schedule.matchHistory !== this.props.schedule.matchHistory) {
+        if (nextProps.group.matchHistory !== this.props.group.matchHistory) {
             this.handleUpdateGroupStandings(nextProps);
         }
-    };
-
-    handleGroupStageStatus = () => {
-    	this.setState({
-    		isGroupStageFinished: true
-    	});
     };
 
     handleScoresRandomizing = () => {
@@ -30,7 +24,7 @@ class Group extends Component {
     };
 
     handleUpdateGroupStandings = (nextProps) => {
-        const { matchHistory } = nextProps.schedule;
+        const { matchHistory } = nextProps.group;
         let newTeamScores = {};
 
         Object.keys(matchHistory).forEach((match) => {
@@ -84,7 +78,10 @@ class Group extends Component {
                 <div className="group__title block-title">
                     <div className="group__title-txt">Group Stage</div>
                 </div>
-	        	<GroupStandings {...this.state} />
+	        	<GroupStandings 
+                    {...this.state} 
+                    isGroupStageFinished={this.props.group.isGroupStageFinished}
+                />
 	        	<GroupSchedule 
                     {...this.state} 
                     groupSchedule={this.props.groupSchedule}

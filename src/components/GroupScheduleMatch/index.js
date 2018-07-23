@@ -2,22 +2,23 @@ import { connect } from "react-redux";
 
 import GroupScheduleMatch from "./GroupScheduleMatch.js";
 
-import { addMatchToHistory, openPopup, closePopup  } from "../../actions/scheduleActions.js";
+import { addMatchToHistory, createGroupWinner  } from "../../actions/groupActions.js";
+import { openPopup, closePopup  } from "../../actions/globalActions.js";
 
-const mapStateToProps = ({ schedule }) => {
+const mapStateToProps = ({ group, globals }) => {
 
 	return {
-		isPopupVisible: schedule.isPopupVisible,
-		toggleScoresRandomizer: schedule.toggleScoresRandomizer
+		isPopupVisible: globals.isPopupVisible,
+		toggleScoresRandomizer: group.toggleScoresRandomizer
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		// togglePopupVisibility: () => dispatch(togglePopupVisibility()),
 		openPopup: () => dispatch(openPopup()),
 		closePopup: () => dispatch(closePopup()),
-		addMatchToHistory: (match) => dispatch(addMatchToHistory(match))
+		addMatchToHistory: (match) => dispatch(addMatchToHistory(match)),
+		createGroupWinner: () => dispatch(createGroupWinner()) 
 	};
 };
 
