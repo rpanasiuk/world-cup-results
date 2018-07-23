@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import GroupSchedule from '../GroupSchedule/GroupSchedule.js';
-import GroupStandings from '../GroupStandings/GroupStandings.js';
+import GroupSchedule from '../../components/GroupSchedule/GroupSchedule.js';
+import GroupStandings from '../../components/GroupStandings/GroupStandings.js';
 
 import './Group.css';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import GroupScheduleMatch from '../GroupScheduleMatch';
+import GroupScheduleMatch from '../../containers/GroupScheduleMatch';
 import GroupScheduleButton from '../GroupScheduleButton/GroupScheduleButton.js';
 
 import './GroupSchedule.css';

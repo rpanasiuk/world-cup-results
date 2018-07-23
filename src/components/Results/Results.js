@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Group from '../Group';
+import Group from '../../containers/Group';
 import { group, schedule } from "../../helpers/resultsInitialData.js";
 
 import './Results.css';

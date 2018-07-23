@@ -1,10 +1,8 @@
 .schedule__button {
-	text-align: center;
-	margin: .8rem 0;
-}
+  text-align: center;
+  margin: .8rem 0; }
 
 .btn--randomize {
-	padding: .8rem 0;
-	width: 12rem;
-	font-size: 1.2rem;
-}
+  padding: .8rem 0;
+  width: 12rem;
+  font-size: 1.2rem; }

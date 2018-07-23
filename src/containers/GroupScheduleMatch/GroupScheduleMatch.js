@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import DateConverter from "../../helpers/dateConverter.js";
-import GroupScheduleScore from "../GroupScheduleScore/GroupScheduleScore.js";
+import GroupScheduleScore from "../../components/GroupScheduleScore/GroupScheduleScore.js";
 
 import './GroupScheduleMatch.css';
 
