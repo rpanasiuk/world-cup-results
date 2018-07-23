@@ -10,18 +10,97 @@ const GroupStandings = ({ isGroupStageFinished, matchHistory, teams }) => {
 
 	const sortStandings = () => {
 		const teamsArray = Object.keys(teams).map(country => teams[country]);
-        additionalCheck(teamsArray);
-		return _.reverse(_.sortBy(teamsArray, ['points', 'balance', 'scored']));
+        const sortedTeamsArray = _.reverse(_.sortBy(teamsArray, ['points', 'balance', 'scored']));
+
+        return additionalCheck(sortedTeamsArray);
 	};
 
     const additionalCheck = (teamsArray) => {
-        console.log(teamsArray)
+        // check if there are teams to order by H2H scores
+
+        const matchesToCheck = [];
+        let firstTeamISO, secondTeamISO;
+
         for (let i=0; i<teamsArray.length-1; i++) {
             for (let j=i+1; j<teamsArray.length; j++) {
-                console.log(Object.values(teamsArray[j]))
+
+                const firstCompareTeam = Object.values(teamsArray[i]);
+                const secondCompareTeam = Object.values(teamsArray[j]);
+                const scoresComparison = _.isEqual(firstCompareTeam.slice(1), secondCompareTeam.slice(1));
+
+                if (scoresComparison) {
+                    firstTeamISO = teamsArray[i].ISO;
+                    secondTeamISO = teamsArray[j].ISO;
+                    matchesToCheck.push([firstCompareTeam, secondCompareTeam])
+                }
             }
         }
-    }
+
+        console.log('matchesToCheck', matchesToCheck)
+
+        if (matchesToCheck.length > 1) {
+            return teamsArray;
+        } else if (matchesToCheck.length == 1) {
+            return getMatchHistory({
+                teamsArray: teamsArray,
+                firstTeamISO: firstTeamISO,
+                secondTeamISO: secondTeamISO                
+            })
+        } else {
+            return teamsArray;
+        }
+    };
+
+    const getMatchHistory = ({ ...props }) => {
+        // get match from history to check H2H score
+        console.log('getMatchHistory', props)
+        if (matchHistory.hasOwnProperty(props.firstTeamISO + props.secondTeamISO)) {
+            return checkMatchWinner(props.teamsArray, props.firstTeamISO, props.secondTeamISO);
+
+        } else if (matchHistory.hasOwnProperty(props.secondTeamISO + props.firstTeamISO)) {
+            return checkMatchWinner(props.teamsArray, props.secondTeamISO, props.firstTeamISO);
+
+        } else {
+            return props.teamsArray;
+        }
+    };
+
+    const checkMatchWinner = (teamsArray, firstISO, secondISO) => {
+        // check if teams are in proper order in table related to H2H score
+
+        const { scoredGoals, lostGoals } = matchHistory[firstISO + secondISO].firstTeam;
+        let indexFirstISO, indexSecondISO;
+
+        teamsArray.forEach((team, i) => {
+            if (team.ISO == firstISO) {
+                indexFirstISO = i;
+            } else if (team.ISO == secondISO) {
+                indexSecondISO = i;
+            }
+        })
+        console.log('indexes', indexFirstISO, indexSecondISO)
+        console.log('scoredGoals', scoredGoals)
+        console.log('lostGoals', lostGoals)
+        if (scoredGoals > lostGoals && indexFirstISO > indexSecondISO) {
+            console.log("win")
+            return swapTeams(teamsArray, indexFirstISO, indexSecondISO);
+        } else if (scoredGoals < lostGoals && indexFirstISO < indexSecondISO) {
+            return swapTeams(teamsArray, indexFirstISO, indexSecondISO);
+        } else {
+            
+            return teamsArray;
+        }           
+    };
+
+    const swapTeams = (array, firstIndex, secondIndex) => {
+        // swap teams in table
+        console.log(swapTeams);
+        const temp = array[firstIndex];
+        array[firstIndex] = array[secondIndex]
+        array[secondIndex] = temp;
+        
+        return array;
+    };
 
 	const markGroupWinner = (index) => {
 		if (isGroupStageFinished && index === 0) {

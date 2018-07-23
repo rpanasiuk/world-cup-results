@@ -79,7 +79,8 @@ class Group extends Component {
                     <div className="group__title-txt">Group Stage</div>
                 </div>
 	        	<GroupStandings 
-                    {...this.state} 
+                    {...this.state}
+                    matchHistory={this.props.group.matchHistory}
                     isGroupStageFinished={this.props.group.isGroupStageFinished}
                 />
 	        	<GroupSchedule 

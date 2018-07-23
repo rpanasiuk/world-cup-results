@@ -1,20 +1,20 @@
 export const group = [	
 	{
-		name: "Poland",
-		ISO: "POL"
+		name: "Spain",
+		ISO: "ESP"
 	},
 	{
-		name: "Brazil",
-		ISO: "BRA"
+		name: "Poland",
+		ISO: "POL"
 	},
 	{
 		name: "Germany",
 		ISO: "GER"
 	},
 	{
-		name: "Spain",
-		ISO: "ESP"
-	}	
+		name: "Brazil",
+		ISO: "BRA"
+	}
 ];
 
 export const schedule = [
