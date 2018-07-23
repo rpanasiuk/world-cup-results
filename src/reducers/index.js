@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
-import schedule from "./scheduleReducer.js";
+import globals from "./globalReducer.js";
+import group from "./groupReducer.js";
 
 export default combineReducers({
-	schedule
+	globals,
+	group
 });
